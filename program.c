@@ -140,7 +140,8 @@ main(int argc, char *argv[]) {
             }
         }
         printf("\n");
-        printf("======= Stage 3 [para %d; start %d; length %d; score %.2f]\n",paragraph, start_ind, end_ind+1, max_score);
+        printf("======= Stage 3 [para %d; start %d; length %d; score %.2f]\n",paragraph, 
+            start_ind, end_ind+1, max_score);
         print_snippet(all_words, start_ind, end_ind, totwords, argv, argc);
         //If EOF is reached, terminate the loop.
         if (para == 1){
@@ -226,7 +227,8 @@ int stage2(word_t A[], int words[], int matches[], char** query, int argc) {
            query term */
         for (; index < MAX_WORD_LEN; index++) {
             if (!str[index]) {
-                if (str[index-1] == ';' || str[index-1] == ',' || str[index-1] == '.' || str[index-1] ==':' || str[index-1]=='!' || str[index-1] =='?') {
+                if (str[index-1] == ';' || str[index-1] == ',' || str[index-1] == '.' || 
+                    str[index-1] ==':' || str[index-1]=='!' || str[index-1] =='?') {
                     str[index-1] = '\0';
                 }
                 break;
@@ -275,7 +277,8 @@ void print_paragraph(word_t B[], int word[], char** query, int argc){
            with the words */
         for (; index < MAX_WORD_LEN; index++) {
             if (!str[index]) {
-                if (str[index-1] == ';' || str[index-1] == ',' || str[index-1] == '.' || str[index-1] ==':' || str[index-1]=='!' || str[index-1] =='?') {
+                if (str[index-1] == ';' || str[index-1] == ',' || str[index-1] == '.' 
+                    || str[index-1] ==':' || str[index-1]=='!' || str[index-1] =='?') {
                     str[index-1] = '\0';
                 }
                 break;
@@ -285,7 +288,8 @@ void print_paragraph(word_t B[], int word[], char** query, int argc){
         for (int k=0; k < argc; k++) {
             query[k][index] = tolower(query[k][index]);
             if (!strcmp(str, query[k])) {
-                if (new_word[index-1] == ';' || new_word[index-1] == ',' || new_word[index-1] == '.' || new_word[index-1] ==':' || new_word[index-1]=='!' || new_word[index-1] =='?') {
+                if (new_word[index-1] == ';' || new_word[index-1] == ',' || new_word[index-1] == '.' 
+                    || new_word[index-1] ==':' || new_word[index-1]=='!' || new_word[index-1] =='?') {
                     printf("**%.*s**", index-1, new_word);
                     printf("%c ", new_word[index-1]);
                 }
@@ -318,7 +322,8 @@ get_score(word_t C[], int matches[], int word[], char** query, int argc, int sta
             word_t str;
             strcpy(str, C[j]);
             index =strlen(str);
-            if (str[index-1] == ';' || str[index-1] == ',' || str[index-1] == '.' || str[index-1] ==':' || str[index-1]=='!' || str[index-1] =='?') {
+            if (str[index-1] == ';' || str[index-1] == ',' || str[index-1] == '.' || str[index-1] ==':' 
+                || str[index-1]=='!' || str[index-1] =='?') {
                 str[index-1] = '\0';
             }
             for (int l=0; l < MAX_WORD_LEN; l++) {
@@ -352,7 +357,8 @@ get_score(word_t C[], int matches[], int word[], char** query, int argc, int sta
         
     }
     int nindex = strlen(C[end]);
-    if (C[end][nindex-1] == ';' || C[end][nindex-1] == ',' || C[end][nindex-1] == '.' || C[end][nindex-1] ==':' || C[end][nindex-1]=='!' || C[end][nindex-1] =='?') {
+    if (C[end][nindex-1] == ';' || C[end][nindex-1] == ',' || C[end][nindex-1] == '.' 
+        || C[end][nindex-1] ==':' || C[end][nindex-1]=='!' || C[end][nindex-1] =='?') {
         score += 0.3;
     }
     // Subtracting 0.1 for every word exceeding the MIN_SNIPPET_LEN
@@ -384,7 +390,8 @@ void  print_snippet(word_t D[], int start, int end, int words[], char** query, i
         strcpy(str, new_word);
         for (; index < MAX_WORD_LEN; index++) {
             if (!str[index]) {
-                if (str[index-1] == ';' || str[index-1] == ',' || str[index-1] == '.' || str[index-1] ==':' || str[index-1]=='!' || str[index-1] =='?') {
+                if (str[index-1] == ';' || str[index-1] == ',' || str[index-1] == '.' 
+                    || str[index-1] ==':' || str[index-1]=='!' || str[index-1] =='?') {
                     str[index-1] = '\0';
                 }
                 break;
@@ -395,7 +402,8 @@ void  print_snippet(word_t D[], int start, int end, int words[], char** query, i
         for (int k=0; k < argc; k++) {
             query[k][index] = tolower(query[k][index]);
             if (!strcmp(str, query[k])) {
-                if (new_word[index-1] == ';' || new_word[index-1] == ',' || new_word[index-1] == '.' || new_word[index-1] ==':' || new_word[index-1]=='!' || new_word[index-1] =='?') {
+                if (new_word[index-1] == ';' || new_word[index-1] == ',' || new_word[index-1] == '.' 
+                    || new_word[index-1] ==':' || new_word[index-1]=='!' || new_word[index-1] =='?') {
                     printf("**%.*s**", index-1, new_word);
                     printf("%c", new_word[index-1]);
                     
