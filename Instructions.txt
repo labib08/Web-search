@@ -1,0 +1,6 @@
+To run the program (on a Mac, using terminal):
+
+gcc -Wall -o program program.c
+./program alice feet < data1.txt
+
+And hit Enter.
